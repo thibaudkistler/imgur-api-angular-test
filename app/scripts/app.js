@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'toastr'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -23,12 +24,9 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/details/:id', {
-        templateUrl: 'views/details.html',
-        controller: 'DetailsCtrl',
-        resolve: {
-
-        }
+      .when('/signup', {
+        templateUrl: 'views/signup.html',
+        controller: 'SignupCtrl'
       })
       .otherwise({
         redirectTo: '/'
@@ -39,6 +37,4 @@ angular
   .run(function($rootScope, $http){
     $rootScope.token = "";
     $rootScope.endPoint = "https://api.imgur.com/3";
-
-    $http.defaults.headers.common['Authorization'] = "Client-ID 65cf3d5474e3e74"
   })
